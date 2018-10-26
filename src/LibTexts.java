@@ -1,4 +1,4 @@
-package midtermLib;
+
 
 public class LibTexts {
 	// HARDCODE THESE?????
