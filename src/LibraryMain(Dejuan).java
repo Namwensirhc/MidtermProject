@@ -36,7 +36,7 @@ public class LibraryMain {
     }
 
     public static void promptUser() {
-        System.out.println ("Please select from the following options : ");
+        System.out.println ("Please select from the following options : "); 
         System.out.println ("1 - Display the entire list of books.");
         System.out.println ("2 - Search for a book by author.");
         System.out.println ("3 - Search for a book by title keyword.");
