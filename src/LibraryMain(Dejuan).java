@@ -25,8 +25,8 @@ public class LibraryMain {
             selection = scan.nextInt ();
             scan.nextLine ();
 
-            //0 is the number we told the user would allow them to quit
-            if (selection == 0)
+            //6 is the number we told the user would allow them to quit
+            if (selection == 6)
                 break;
 
             UserInputAction (selection, scan, bookList;
