@@ -1,43 +1,78 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
-import java.awt.BorderLayout;
-import java.awt.Container;
+public class Gui extends JFrame implements ActionListener {
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
+    private static final long serialVersionUID = 1L;
+    private JButton EAST;
+    private JButton WEST;
+    private JButton CENTER;
+    private JButton NORTH;
+    private JButton SOUTH;
 
-public class Gui {
-	public static JButton EAST;
-	public static JButton WEST;
-	public static JButton CENTER;
-	public static JButton NORTH;
-	public static JButton SOUTH;
+    private void createAndShowGUI() {
+        JFrame gui;
+        Container pane;
 
-	public static void main(String[] args) {
-		JFrame gui = new JFrame("My First GUI");
-		gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		gui.setSize(500, 500);
-//		JButton button1 = new JButton("Books in");
-//		JButton button2 = new JButton("Books Out");
-//		frame.getContentPane().add(button1);
-//		frame.getContentPane().add(button2);
-		gui.setVisible(true);
+        gui = new JFrame(“My First GUI”);
+        gui.setTitle(“Welcome to my first GUI.“);
+        gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        gui.setSize(500, 500);
+        gui.setVisible(true);
 
-		Container pane = gui.getContentPane();
-//		pane.setBackground(new Color(12, 34, 50));
-		pane.setLayout(new BorderLayout());
+        EAST = new JButton(“EAST”);
+        EAST.addActionListener(this);
+        WEST = new JButton(“WEST”);
+        WEST.addActionListener(this);
+        CENTER = new JButton(“CENTER”);
+        CENTER.addActionListener(this);
+        NORTH = new JButton(“NORTH”);
+        NORTH.addActionListener(this);
+        SOUTH = new JButton(“SOUTH”);
+        SOUTH.addActionListener(this);
 
-		JButton east = new JButton("East");
-		JButton west = new JButton("West");
-		JButton center = new JButton("Center");
-		JButton north = new JButton("North");
-		JButton south = new JButton("South");
+        pane = gui.getContentPane();
+        pane.setBackground(new Color(12, 34, 50));
+        pane.setLayout(new BorderLayout());
 
-		pane.add(east, BorderLayout.EAST);
-		pane.add(west, BorderLayout.WEST);
-		pane.add(center, BorderLayout.CENTER);
-		pane.add(north, BorderLayout.NORTH);
-		pane.add(south, BorderLayout.SOUTH);
+        pane.add(EAST, BorderLayout.EAST);
+        pane.add(WEST, BorderLayout.WEST);
+        pane.add(CENTER, BorderLayout.CENTER);
+        pane.add(NORTH, BorderLayout.NORTH);
+        pane.add(SOUTH, BorderLayout.SOUTH);
+    }
 
-	}
+    public static void main(String[] args) {
+        // Schedule a job for the event-dispatching thread:
+        // creating and showing this application’s GUI.
+        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                Gui gui = new Gui();
+                gui.createAndShowGUI();
+            }
+        });
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent event) {
+        // Declare and initialize variables.
+
+        // Get source of event (5 buttons in GUI)
+        JButton sourceEvent = (JButton) event.getSource();
+
+        if (sourceEvent == EAST) {
+            // doEasterlyStuff();
+        } else if (sourceEvent == WEST) {
+            // doWesterlyStuff();
+        } else if (sourceEvent == CENTER) {
+            // doCentralStuff();
+        } else if (sourceEvent == NORTH) {
+            // doNortherlyStuff();
+        } else if (sourceEvent == SOUTH) {
+            // doSoutherlyStuff();
+        }
+
+    }
 
 }
