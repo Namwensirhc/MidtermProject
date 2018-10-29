@@ -29,10 +29,9 @@ public class BookList {
         System.out.println ("Here are the list of books: ");
         for (int i = 0; i < books.size (); i++) {
             Book b = books.get ( i );
-            System.out.println ( "Book " + (i + 1) + " - Status : " + b.getBookStatus ()
-                    + " - Due Date : " + b.getDueDate ());
-            System.out.println ( "Title : " + b.getTitle () );
-            System.out.println ( "Author : " + b.getAuthor () );
+            System.out.println ("Book " + (i + 1) + " - Status : " + b.getBookStatus () + " - Due Date : " + b.getDueDate());
+            System.out.println ("Title : " + b.getTitle() );
+            System.out.println ("Author : " + b.getAuthor() );
             System.out.println ("----------------------------------------------------------------------------");
         }
     }
@@ -66,7 +65,7 @@ public class BookList {
                 found = true;
                 System.out.println (temp);
                 if (temp.getBookStatus () != Book.STATUS.BookNotAvailable) {
-                    System.out.println ( "Would you like to check out this book (y/n)?" );
+                    System.out.println ("Would you like to check out this book (y/n)?" );
                     userChar = scan.nextLine ().charAt ( 0 );
                     if (userChar == 'y' || userChar == 'Y') {
                         CheckOutBook ( temp );
@@ -80,7 +79,8 @@ public class BookList {
     //Void method to select book
     public static Book SelectBook(ArrayList <Book> books, Scanner scan) {
         int bookSel;
-        //the book returned to user;
+        
+    //the book returned to user;
         Book retBook = null;
 
         do {
@@ -90,7 +90,8 @@ public class BookList {
         return retBook;
     }
 
-    //Void method to check out book (update STATUS to BookNotAvailable).
+    //Void method to check out book. If user wants to check out a book and its not available 
+    //status will update to BookNotAvailable.
     public static void CheckOutBook(Book bookWanted) {
         if (bookWanted.getBookStatus () == Book.STATUS.BookNotAvailable) {
             System.out.println ("Sorry \"" + bookWanted.getTitle () + "\" by \"" + bookWanted.getAuthor () + "\" was already checked out." );
@@ -102,7 +103,8 @@ public class BookList {
                     "The due date is " + bookWanted.getDueDate () + ".");
         }
     }
-
+    
+    //If user wants to return a book that is already checked out
     public static void ReturnBook(Book bookWanted) {
         if (bookWanted.getBookStatus () == Book.STATUS.BookAvailable) {
             System.out.println ("\"" + bookWanted.getTitle () + "\" by \"" + bookWanted.getAuthor () + "\" is not checked out.");
