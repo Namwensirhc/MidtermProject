@@ -71,6 +71,7 @@ public class LibraryMain {
             
         } while (true);
         System.out.println("Ok, thank you for using the library. Have a nice day!");
+        scan.close();
     }
 
 	public static void promptUser() {

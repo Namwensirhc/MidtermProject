@@ -85,6 +85,7 @@ public class EditFileList {
 				System.out.println((i + 1) + ".) " + lines.get(i));
 		}
 	}
+	}
 
 	public static void searchTitle(ArrayList<?> input, Scanner scan, String prompt) {
 		System.out.println(prompt);
