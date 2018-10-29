@@ -10,19 +10,19 @@ import java.util.Scanner;
 public class BookList {
 
     //Void method containing 12 books that will be stored in ArrayList<Book> if original txt file is empty
-    public static void defBookList(ArrayList <Book> bookList) {
-        bookList.add (new Book("Me Talk Pretty One Day" , "David Sedaris"));          
-        bookList.add (new Book("To Kill A Mocking Bird" , "Harper Lee"));             
-        bookList.add (new Book( "A Heartbreaking Work Of Stagering Genius", "Dave Eggers"));                   
-        bookList.add (new Book("The Road" , "Cormac McCarthy"));               
-        bookList.add (new Book("Seabiscuit", "Laura Hillenbrand"));              
-        bookList.add (new Book("Lonesome Dave", "Larry McMurtry"));             
-        bookList.add (new Book("Watchrs", "Dean Koontz"));               
-        bookList.add (new Book("IT" , "Steven King"));               
-        bookList.add (new Book("Jaws", "Peter Benchly"));              
-        bookList.add (new Book("The Side Of Paradise", "F Scott Fitzgerald"));               
-        bookList.add (new Book("Do Androids Dream of Electric Sheep", "Philip K. Dick"));              
-        bookList.add (new Book("The Zombie Survival Guide", "Max Brooks"));              
+    public static void defBookList(ArrayList <Book> books) {
+        books.add (new Book("Me Talk Pretty One Day" , "David Sedaris"));          
+        books.add (new Book("To Kill A Mocking Bird" , "Harper Lee"));             
+        books.add (new Book( "A Heartbreaking Work Of Stagering Genius", "Dave Eggers"));                   
+        books.add (new Book("The Road" , "Cormac McCarthy"));               
+        books.add (new Book("Seabiscuit", "Laura Hillenbrand"));              
+        books.add (new Book("Lonesome Dave", "Larry McMurtry"));             
+        books.add (new Book("Watchrs", "Dean Koontz"));               
+        books.add (new Book("IT" , "Steven King"));               
+        books.add (new Book("Jaws", "Peter Benchly"));              
+        books.add (new Book("The Side Of Paradise", "F Scott Fitzgerald"));               
+        books.add (new Book("Do Androids Dream of Electric Sheep", "Philip K. Dick"));              
+        books.add (new Book("The Zombie Survival Guide", "Max Brooks"));              
     }
 
     public static void displayBooks(ArrayList <Book> books) { //taking in arraylist from library main as parameter
@@ -90,7 +90,7 @@ public class BookList {
         return retBook;
     }
 
-    //Void method to check out book (update STATUS to CHECKEDOUT).
+    //Void method to check out book (update STATUS to BookNotAvailable).
     public static void CheckOutBook(Book bookWanted) {
         if (bookWanted.getBookStatus () == Book.STATUS.BookNotAvailable) {
             System.out.println ("Sorry \"" + bookWanted.getTitle () + "\" by \"" + bookWanted.getAuthor () + "\" was already checked out." );
@@ -117,7 +117,7 @@ public class BookList {
         System.out.println ("Please enter the book number that needs to be deleted : ");
         int index = scan.nextInt () - 1;
         books.remove (index);
-        System.out.println ( "New Inventory List :" );
+        System.out.println ("New Inventory List :" );
         displayBooks (books);
     }
 
