@@ -1,6 +1,5 @@
 package midtermLib;
 
-import java.awt.print.Book;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -71,7 +70,7 @@ public class LibraryMain {
                 BookList.ReturnBook (currBook);
                 break;
             case 6:
-                BookList.RemoveBookFromInventory (books, scan );
+                BookList.RemoveBookFromInventory (books, scan);
                 break;
             case 7:
                 BookList.AddBookTotheArray (books, scan);
