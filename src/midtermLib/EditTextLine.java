@@ -8,17 +8,23 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.io.Writer;
+import java.util.ArrayList;
 
 public class EditTextLine {
 
 public static void changeTextLine(String fileName, String newLine, int lineNumber) {
         String content = new String();
         String editedContent = new String();
-        content = readFile(fileName);
+        String books = readFromFile(fileName);
         editedContent = editLineInContent(content, newLine, lineNumber);
         writeToFile(fileName, editedContent);
 
     }
+
+private static String readFromFile(String fileName) {
+	// TODO Auto-generated method stub
+	return null;
+}
 
 private static int numberOfLinesInFile(String content) {
     int numberOfLines = 0;
@@ -107,10 +113,10 @@ private static String editLineInContent(String content, String newLine, int line
     return content;
 }
 
-private static void writeToFile(String file, String content) {
+private static void writeToFile(String file, String books) {
 
     try (Writer writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), "utf-8"))) {
-        writer.write(content);
+        writer.write(books);
     } catch (UnsupportedEncodingException e) {
         // TODO Auto-generated catch block
         e.printStackTrace();
@@ -123,15 +129,15 @@ private static void writeToFile(String file, String content) {
     }
 }
 
-private static String readFile(String filename) {
-    String content = null;
-    File file = new File(filename);
+private static String readFromFile(String fileName, String books) {
+    String books1 = null;
+    File file = new File(fileName);
     FileReader reader = null;
     try {
         reader = new FileReader(file);
         char[] chars = new char[(int) file.length()];
         reader.read(chars);
-        content = new String(chars);
+        books1 = new String(chars);
         reader.close();
     } catch (IOException e) {
         e.printStackTrace();
@@ -145,7 +151,26 @@ private static String readFile(String filename) {
             }
         }
     }
-    return content;
+    return books1;
 }
+
+static void createFile(String fileName) {
+	
+	
+}
+
+static void readFromFile(String fileName, ArrayList<Book> bookList) {
+	// TODO Auto-generated method stub
+	
+}
+
+static void writeToFile(ArrayList<Book> bookList, String fileName) {
+	// TODO Auto-generated method stub
+	
+}
+
+
+
+
 
 }
