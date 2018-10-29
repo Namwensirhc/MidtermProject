@@ -1,4 +1,4 @@
-package midtermLib;
+
 
 public class LibMethods {
 //Book details, title author keywords status due dates
