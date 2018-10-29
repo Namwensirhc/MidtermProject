@@ -5,21 +5,21 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class LibraryMain {
-    public static void main(String[] args) {
+	public static void main(String[] args) {
     	
     	Scanner scan = new Scanner (System.in);
-        final String fileName = "bookList.txt";
+        final String fileName = "books.txt";
+        String directoryFolder = "libraryFolder";
         int selection;
-        
-        ArrayList <Book> bookList = new ArrayList <Book> ();
+        ArrayList <Book> books = new ArrayList <Book> ();
 
         EditTextLine.createFile (fileName);
-        EditTextLine.readFromFile (fileName, bookList);
-        if (bookList.isEmpty ()) {
-            BookList.defBookList (bookList);
+        EditTextLine.readFromFile (fileName, books);
+        if (books.isEmpty ()) {
+            BookList.defBookList (books);
         }
 
-        System.out.println ("Welcome to SBMI Library \n"); //Chris lol
+        System.out.println ("Welcome To The DBC Library \n"); //Dejuan, Bryan, Chris Library
         do {
             promptUser ();
             selection = scan.nextInt ();
@@ -29,14 +29,14 @@ public class LibraryMain {
             if (selection == 6)
                 break;
 
-            UserInputAction (selection, scan, bookList;
+            UserInputAction (selection, scan, books);
             System.out.println ();
         } while (true);
-        EditTextLine.writeToFile (bookList, fileName );
+        EditTextLine.writeToFile (books, fileName);
     }
 
     public static void promptUser() {
-        System.out.println ("Please select from the following options : "); 
+        System.out.println ("Please select from the following options : ");
         System.out.println ("1 - Display the entire list of books.");
         System.out.println ("2 - Search for a book by author.");
         System.out.println ("3 - Search for a book by title keyword.");
@@ -46,38 +46,38 @@ public class LibraryMain {
         System.out.print ("Select here: ");
     }
 
-    public static void UserInputAction(int selection, Scanner scan, ArrayList <Book> bookList) {
+    public static void UserInputAction(int selection, Scanner scan, ArrayList <Book> books) {
         Book currBook;
         switch (selection) {
             case 1:
-                BookList.displayBooks (bookList);
+                BookList.displayBooks (books);
                 break;
             case 2:
-                BookList.searchBookByAuthor (bookList, scan);
+                BookList.searchBookByAuthor (books, scan);
                 break;
             case 3:
-                BookList.searchBookByTitle (bookList, scan);
+                BookList.searchBookByTitle (books, scan);
                 break;
             case 4:
-                BookList.displayBooks (bookList);
+                BookList.displayBooks (books);
                 System.out.println ("Please enter the book number you would like to check out : ");
-                currBook = BookList.SelectBook (bookList, scan);
+                currBook = BookList.SelectBook (books, scan);
                 BookList.CheckOutBook (currBook);
                 break;
             case 5:
                 System.out.println ("Please enter the book number you would like to return : ");
-                currBook = BookList.SelectBook (bookList, scan);
+                currBook = BookList.SelectBook (books, scan);
                 BookList.ReturnBook (currBook);
                 break;
             case 6:
-                BookList.RemoveBookFromInventory (bookList, scan );
+                BookList.RemoveBookFromInventory (books, scan );
                 break;
             case 7:
-                BookList.AddBookTotheArray (bookList, scan);
+                BookList.AddBookTotheArray (books, scan);
                 break;
             case 8:
-                bookList.clear ();
-                BookList.defBookList (bookList);
+                books.clear ();
+                BookList.defBookList (books);
                 break;
             default:
                 System.out.println ("Error");
