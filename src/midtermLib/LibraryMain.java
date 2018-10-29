@@ -1,23 +1,28 @@
 package midtermLib;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
 
 public class LibraryMain {
 	public static void main(String[] args) {
     	
     	Scanner scan = new Scanner (System.in);
         final String fileName = "books.txt";
-        String directoryFolder = "libraryFolder";
+        final String directoryFolder = "midtermLib.libraryFolder";
         int selection;
-        ArrayList <Book> books = new ArrayList <Book> ();
-
-        EditTextLine.createFile (fileName);
-        EditTextLine.readFromFile (fileName, books);
-        if (books.isEmpty ()) {
-            BookList.defBookList (books);
-        }
+        ArrayList <String> booksList = new ArrayList <String> ();
+        
+    	File f = new File("C:/Users/bryan/eclipse-workspace/MidtermTestPackage/Books/books.txt");
+		try {
+			booksList = EditFileList.getListFromFile(f);
+		} catch (FileNotFoundException e1) {
+			System.out.println("Error-404: One guess if the file was found or not....");
+		}
+  
 
         System.out.println ("Welcome To The DBC Library \n"); //Dejuan, Bryan, Chris Library
         do {
@@ -25,62 +30,59 @@ public class LibraryMain {
             selection = scan.nextInt ();
             scan.nextLine ();
 
-            //6 is the number we told the user would allow them to quit
-            if (selection == 6)
+            
+            if (selection == 6)//6 is the number we told the user would allow them to quit
                 break;
 
-            UserInputAction (selection, scan, books);
-            System.out.println ();
-        } while (true);
-        EditTextLine.writeToFile (books, fileName);
-    }
-
-    public static void promptUser() {
-        System.out.println ("Please select from the following options : ");
-        System.out.println ("1 - Display the entire list of books.");
-        System.out.println ("2 - Search for a book by author.");
-        System.out.println ("3 - Search for a book by title keyword.");
-        System.out.println ("4 - Select a book to check out.");
-        System.out.println ("5 - Return a book.");
-        System.out.println ("6 - Quit and Save.");
-        System.out.print ("Select here: ");
-    }
-
-    public static void UserInputAction(int selection, Scanner scan, ArrayList <Book> books) {
-        Book currBook;
-        switch (selection) {
+            switch (selection) {
             case 1:
-                BookList.displayBooks (books);
+            	EditFileList.getBookList(booksList);
                 break;
             case 2:
-                BookList.searchBookByAuthor (books, scan);
+                EditFileList.searchAuthor(booksList, scan, "Please enter the author you are looking for: ");
                 break;
             case 3:
-                BookList.searchBookByTitle (books, scan);
+            	 EditFileList.searchTitle(booksList, scan, "Please enter the title you are looking for: ");
                 break;
             case 4:
-                BookList.displayBooks (books);
+                EditFileList.getBookList(booksList);
                 System.out.println ("Please enter the book number you would like to check out : ");
-                currBook = BookList.SelectBook (books, scan);
-                BookList.CheckOutBook (currBook);
+                int userChoice = scan.nextInt();
+                String bookOut = EditFileList.checkOut(booksList, userChoice);
+                booksList.set(userChoice-1, bookOut);
+                EditFileList.writeToFile ("midtermLib.libraryFolder", "books.txt", booksList);
                 break;
             case 5:
+            	EditFileList.getBookList(booksList);
                 System.out.println ("Please enter the book number you would like to return : ");
-                currBook = BookList.SelectBook (books, scan);
-                BookList.ReturnBook (currBook);
+                int userChoice2 = scan.nextInt();
+                String bookIn = EditFileList.returnBook(booksList, userChoice2);
+                booksList.set(userChoice2-1, bookIn);
+                EditFileList.writeToFile ("midtermLib.libraryFolder", "books.txt", booksList);
                 break;
             case 6:
-                BookList.RemoveBookFromInventory (books, scan);
-                break;
-            case 7:
-                BookList.AddBookTotheArray (books, scan);
-                break;
-            case 8:
-                books.clear ();
-                BookList.defBookList (books);
+                System.out.println("Thank you for using the library.");
                 break;
             default:
                 System.out.println ("Error");
         }
+            System.out.println ();
+            
+            
+        } while (true);
+        System.out.println("Ok, thank you for using the library. Have a nice day!");
     }
-}
+
+	public static void promptUser() {
+	    System.out.println ("Please select from the following options : ");
+	    System.out.println ("1 - Display the entire list of books.");
+	    System.out.println ("2 - Search for a book by author.");
+	    System.out.println ("3 - Search for a book by title keyword.");
+	    System.out.println ("4 - Select a book to check out.");
+	    System.out.println ("5 - Return a book.");
+	    System.out.println ("6 - Quit and Save.");
+	    System.out.print ("Select here: \n");
+	}
+
+    }
+
