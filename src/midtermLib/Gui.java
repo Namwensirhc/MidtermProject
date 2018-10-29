@@ -1,3 +1,4 @@
+package midtermLib;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -15,21 +16,21 @@ public class Gui extends JFrame implements ActionListener {
         JFrame gui;
         Container pane;
 
-        gui = new JFrame(“My First GUI”);
+        gui = new JFrame(“My First GUI�?);
         gui.setTitle(“Welcome to my first GUI.“);
         gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         gui.setSize(500, 500);
         gui.setVisible(true);
 
-        EAST = new JButton(“EAST”);
+        EAST = new JButton(“EAST�?);
         EAST.addActionListener(this);
-        WEST = new JButton(“WEST”);
+        WEST = new JButton(“WEST�?);
         WEST.addActionListener(this);
-        CENTER = new JButton(“CENTER”);
+        CENTER = new JButton(“CENTER�?);
         CENTER.addActionListener(this);
-        NORTH = new JButton(“NORTH”);
+        NORTH = new JButton(“NORTH�?);
         NORTH.addActionListener(this);
-        SOUTH = new JButton(“SOUTH”);
+        SOUTH = new JButton(“SOUTH�?);
         SOUTH.addActionListener(this);
 
         pane = gui.getContentPane();

@@ -1,3 +1,4 @@
+package midtermLib;
 
 
 import java.util.Scanner;

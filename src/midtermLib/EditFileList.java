@@ -41,11 +41,11 @@ public class EditFileList {
 		return list;
 	}
 
-	public static void writeToFile(String directoryFolder, String fileName, String input) {
+	public static void writeToFile(String directoryFolder, String fileName, ArrayList<String> input) {
 		Path filePath = Paths.get(directoryFolder, fileName);
 		File file = filePath.toFile();
 		
-		String lines = input;
+		ArrayList<String> lines = input;
 
 		try {
 			PrintWriter outW = new PrintWriter(new FileOutputStream(file, true));
