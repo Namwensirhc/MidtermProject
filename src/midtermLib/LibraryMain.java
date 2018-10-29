@@ -16,7 +16,7 @@ public class LibraryMain {
         int selection;
         ArrayList <String> booksList = new ArrayList <String> ();
         
-    	File f = new File("C:/Users/bryan/eclipse-workspace/MidtermTestPackage/Books/books.txt");
+    	File f = new File("C:/Users/bryan/eclipse-workspace/MidtermProject/src/midtermLib/libraryFolder/books.txt");
 		try {
 			booksList = EditFileList.getListFromFile(f);
 		} catch (FileNotFoundException e1) {

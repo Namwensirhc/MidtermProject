@@ -83,9 +83,6 @@ public class EditFileList {
 			temp = temp.toLowerCase();
 			if (temp.contains(bookAuthor)) {
 				System.out.println((i + 1) + ".) " + lines.get(i));
-			}else {
-				System.out.println("We do not currently have that author.");
-			}
 		}
 	}
 
@@ -100,8 +97,6 @@ public class EditFileList {
 			temp = temp.toLowerCase();
 			if (temp.contains(bookTitle)) {
 				System.out.println((i + 1) + ".) " + lines.get(i));
-			}else {
-				System.out.println("WE do not currently have that title.");
 			}
 		}
 	}
