@@ -1,15 +1,11 @@
 package midtermLib;
 
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
-import java.io.Writer;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.DateFormat;
@@ -18,7 +14,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
-
 
 public class EditFileList {
 
@@ -32,15 +27,15 @@ public class EditFileList {
 		scnr.close();
 		return list;
 	}
-	
-	public static void getBookList (ArrayList<?> input) {
+
+	public static void getBookList(ArrayList<?> input) {
 		for (int x = 0; x < input.size(); x++) {
-			System.out.println((x + 1) + ". " + input.get(x) +"\n");
+			System.out.println((x + 1) + ". " + input.get(x) + "\n");
 		}
 	}
 
 	public static String checkOut(ArrayList<?> lines, int input) {
-		DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
 		String today = (dateFormat.format(date));
 		LocalDate datePlus = LocalDate.now().plusDays(14);
@@ -54,7 +49,7 @@ public class EditFileList {
 		}
 		return temp;
 	}
-	
+
 	public static String returnBook(ArrayList<?> lines, int input) {
 		DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
 		Date date = new Date();
@@ -63,11 +58,10 @@ public class EditFileList {
 		String temp = (String) lines.get(input - 1);
 		if (temp.contains("Checked Out")) {
 			int end = temp.indexOf(":");
-			temp = temp.substring(0,end);
+			temp = temp.substring(0, end);
 			System.out.println("Returned on " + today);
 			temp = temp + ": In Stock";
-			
-					
+
 		}
 		return temp;
 	}
@@ -83,9 +77,10 @@ public class EditFileList {
 			temp = temp.toLowerCase();
 			if (temp.contains(bookAuthor)) {
 				System.out.println((i + 1) + ".) " + lines.get(i));
+			}
 		}
 	}
-	}
+	
 
 	public static void searchTitle(ArrayList<?> input, Scanner scan, String prompt) {
 		System.out.println(prompt);
@@ -118,16 +113,15 @@ public class EditFileList {
 	public static void writeToFile(String directoryFolder, String fileName, ArrayList<?> input) {
 		Path filePath = Paths.get(directoryFolder, fileName);
 		File file = filePath.toFile();
-		
+
 		ArrayList<String> temp = (ArrayList<String>) input;
 		String newFile = temp.get(0);
-		
+
 		for (int i = 1; i < temp.size(); i++) {
-			 
-			 newFile = newFile + "\n" + temp.get(i);
-			
+
+			newFile = newFile + "\n" + temp.get(i);
+
 		}
-		
 
 		try {
 			PrintWriter outW = new PrintWriter(new FileOutputStream(file, false));
@@ -136,7 +130,6 @@ public class EditFileList {
 		} catch (FileNotFoundException e) {
 			System.out.println("Error - 404: File not found....HaHa!");
 		}
-		
 
 	}
 }

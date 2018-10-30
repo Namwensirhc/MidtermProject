@@ -3,7 +3,6 @@ package midtermLib;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
@@ -12,7 +11,7 @@ public class LibraryMain {
     	
     	Scanner scan = new Scanner (System.in);
         final String fileName = "books.txt";
-        final String directoryFolder = "midtermLib.libraryFolder";
+        final String directoryFolder = "src/midtermLib/libraryFolder";
         int selection;
         ArrayList <String> booksList = new ArrayList <String> ();
         
@@ -20,7 +19,7 @@ public class LibraryMain {
 		try {
 			booksList = EditFileList.getListFromFile(f);
 		} catch (FileNotFoundException e1) {
-			System.out.println("Error-404: One guess if the file was found or not....");
+			System.out.println("Error-404: One guess if the file was found or not....c'mon....guess....");
 		}
   
 
@@ -45,23 +44,27 @@ public class LibraryMain {
             	 EditFileList.searchTitle(booksList, scan, "Please enter the title you are looking for: ");
                 break;
             case 4:
+            	System.out.println("Ok, which book would you like to check out?: ");
+            	System.out.println();
                 EditFileList.getBookList(booksList);
                 System.out.println ("Please enter the book number you would like to check out : ");
                 int userChoice = scan.nextInt();
                 String bookOut = EditFileList.checkOut(booksList, userChoice);
                 booksList.set(userChoice-1, bookOut);
-                EditFileList.writeToFile ("midtermLib.libraryFolder", "books.txt", booksList);
+                EditFileList.writeToFile ("src/midtermLib/libraryFolder", "books.txt", booksList);
                 break;
             case 5:
+            	System.out.println("Ok, which book are you returning?: ");
+            	System.out.println();
             	EditFileList.getBookList(booksList);
                 System.out.println ("Please enter the book number you would like to return : ");
                 int userChoice2 = scan.nextInt();
                 String bookIn = EditFileList.returnBook(booksList, userChoice2);
                 booksList.set(userChoice2-1, bookIn);
-                EditFileList.writeToFile ("midtermLib.libraryFolder", "books.txt", booksList);
+                EditFileList.writeToFile ("src/midtermLib/libraryFolder", "books.txt", booksList);
                 break;
             case 6:
-                System.out.println("Thank you for using the library.");
+                
                 break;
             default:
                 System.out.println ("Error");
